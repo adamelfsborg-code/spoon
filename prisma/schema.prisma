@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Category {
+  id          String       @id @default(uuid())
+  timestamp   DateTime     @default(now())
+  name        String       @unique
+  ingredients Ingredient[]
+
+  @@map(name: "category")
+}
+
+model Ingredient {
+  id                 String               @id @default(uuid())
+  timestamp          DateTime             @default(now())
+  name               String
+  category_id        String
+  category           Category             @relation(fields: [category_id], references: [id])
+  sfa                Float                @default(0.0)
+  mufa               Float                @default(0.0)
+  pufa               Float                @default(0.0)
+  c4_0_c10_0         Float                @default(0.0)
+  c12_0              Float                @default(0.0)
+  c14_0              Float                @default(0.0)
+  c16_0              Float                @default(0.0)
+  c18_0              Float                @default(0.0)
+  c20_0              Float                @default(0.0)
+  c16_1              Float                @default(0.0)
+  c18_1              Float                @default(0.0)
+  c18_2              Float                @default(0.0)
+  c18_3              Float                @default(0.0)
+  c20_4              Float                @default(0.0)
+  c20_5              Float                @default(0.0)
+  c22_5              Float                @default(0.0)
+  c22_6              Float                @default(0.0)
+  chol               Float                @default(0.0)
+  mono               Float                @default(0.0)
+  di                 Float                @default(0.0)
+  suc                Float                @default(0.0)
+  energy_kcal        Float                @default(0.0)
+  ash                Float                @default(0.0)
+  water              Float                @default(0.0)
+  waste              Float                @default(0.0)
+  carbs              Float                @default(0.0)
+  prot               Float                @default(0.0)
+  alc                Float                @default(0.0)
+  fiber              Float                @default(0.0)
+  fat                Float                @default(0.0)
+  p                  Float                @default(0.0)
+  i                  Float                @default(0.0)
+  fe                 Float                @default(0.0)
+  ca                 Float                @default(0.0)
+  k                  Float                @default(0.0)
+  mg                 Float                @default(0.0)
+  na                 Float                @default(0.0)
+  se                 Float                @default(0.0)
+  zn                 Float                @default(0.0)
+  vita               Float                @default(0.0)
+  retinol            Float                @default(0.0)
+  vitd               Float                @default(0.0)
+  vite               Float                @default(0.0)
+  b_car              Float                @default(0.0)
+  thiam              Float                @default(0.0)
+  ribofl             Float                @default(0.0)
+  vitc               Float                @default(0.0)
+  niac               Float                @default(0.0)
+  niek               Float                @default(0.0)
+  vitb12             Float                @default(0.0)
+  vitb6              Float                @default(0.0)
+  folate             Float                @default(0.0)
+  mono_disack        Float                @default(0.0)
+  fullk_tot          Float                @default(0.0)
+  nacl               Float                @default(0.0)
+  socker_t           Float                @default(0.0)
+  socker_f           Float                @default(0.0)
+  recipes     IngredientInRecipe[]
+  @@map(name: "ingredient")
+}
+
+// Recipe table
+model Recipe {
+  id        String       @id @default(uuid())
+  timestamp DateTime     @default(now()) @db.Timestamptz
+  name      String       @unique
+  ingredients IngredientInRecipe[]
+  @@map(name: "recipe")
+}
+
+// IngredientInRecipe table
+model IngredientInRecipe {
+  id          String    @id @default(uuid())
+  recipe_id    String    @db.Uuid
+  ingredient_id String   @db.Uuid
+  timestamp   DateTime  @default(now()) @db.Timestamptz
+  weight      Float     @default(0.0)
+  recipe      Recipe    @relation(fields: [recipe_id], references: [id])
+  ingredient  Ingredient @relation(fields: [ingredient_id], references: [id])
+  @@map(name: "ingredient_in_recipe")
+}
