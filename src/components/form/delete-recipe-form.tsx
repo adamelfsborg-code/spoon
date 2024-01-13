@@ -1,10 +1,9 @@
 "use client"
 
-import ButtonUI from './ui/button-ui'
-import Input from './ui/input-ui'
+import ButtonUI from '<spoon>/components/ui/button-ui'
 import { type Recipe } from '@prisma/client'
 import { toast } from 'react-hot-toast'
-import deleteRecipe from '<spoon>/actions/delete-recipe-action'
+import deleteRecipe from '<spoon>/actions/delete/delete-recipe-action'
 
 type DeleteRecipeFormProps = {
   recipe: Recipe
@@ -29,10 +28,10 @@ const DeleteRecipeForm = (props: DeleteRecipeFormProps) => {
         <div>
           <p>Are you sure you want to delete <span className='font-semibold' >{props.recipe.name}</span> ?</p>
         </div>
-          <ButtonUI className='flex-start' >
-            Delete
-          </ButtonUI>
-        </div>
+        <ButtonUI className='flex-start' >
+          Delete
+        </ButtonUI>
+      </div>
     </form>
   )
 }

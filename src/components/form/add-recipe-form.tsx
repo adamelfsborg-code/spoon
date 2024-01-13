@@ -1,8 +1,8 @@
 "use client"
 
-import ButtonUI from './ui/button-ui'
-import Input from './ui/input-ui'
-import addRecipe from '<spoon>/actions/add-recipe-action';
+import ButtonUI from '<spoon>/components/ui/button-ui'
+import InputUI from '<spoon>/components/ui/input-ui'
+import addRecipe from '<spoon>/actions/add/add-recipe-action';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
@@ -21,7 +21,7 @@ const AddRecipeForm = () => {
   return (
     <form action={handleFormAction}>
       <div className='flex gap-2' >
-        <Input label='name' name='name' />   
+        <InputUI label='name' name='name' />   
         <ButtonUI>
           Submit
         </ButtonUI>

@@ -1,14 +1,14 @@
-import fetchIngredients from '<spoon>/actions/fetch-ingredients'
+import fetchIngredients from '<spoon>/actions/fetch/fetch-ingredients'
 import { PageProps } from '<spoon>/app/page'
-import AddIngredientToRecipeForm from '<spoon>/components/add-ingredient-to-recipe-form'
+import AddIngredientToRecipeForm from '<spoon>/components/form/add-ingredient-to-recipe-form'
 import ContainerUI from '<spoon>/components/ui/container-ui'
 import SectionUI from '<spoon>/components/ui/section-ui'
 import React from 'react'
-import fetchRecipeWithIngredients from '<spoon>/actions/fetch-recipe-with-ingredients-action'
+import fetchRecipeWithIngredients from '<spoon>/actions/fetch/fetch-recipe-with-ingredients-action'
 import CardUI from '<spoon>/components/ui/card-ui'
 import calculateTotalMacro from '<spoon>/lib/total-macro'
 import { type Ingredient } from '@prisma/client'
-import MacroDoughnutChart from '<spoon>/components/macro-doughnut-chart'
+import MacroDoughnutChart from '<spoon>/components/chart/macro-doughnut-chart'
 
 const Page = async (props: PageProps) => {
   const recipe = await fetchRecipeWithIngredients({ id: String(props.params?.id || '' )})

@@ -4,7 +4,6 @@ import { cn } from '<spoon>/lib/cn'
 import { ButtonHTMLAttributes } from 'react'
 import { useFormStatus } from 'react-dom';
 
-
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 const ButtonUI = (props: ButtonProps) => {

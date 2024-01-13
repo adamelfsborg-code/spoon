@@ -1,6 +1,6 @@
-import fetchRecipeWithIngredients from '<spoon>/actions/fetch-recipe-with-ingredients-action';
+import fetchRecipeWithIngredients from '<spoon>/actions/fetch/fetch-recipe-with-ingredients-action';
 import { PageProps } from '<spoon>/app/page';
-import MacroDoughnutChart from '<spoon>/components/macro-doughnut-chart';
+import MacroDoughnutChart from '<spoon>/components/chart/macro-doughnut-chart';
 import CardUI from '<spoon>/components/ui/card-ui';
 import ContainerUI from '<spoon>/components/ui/container-ui';
 import SectionUI from '<spoon>/components/ui/section-ui';

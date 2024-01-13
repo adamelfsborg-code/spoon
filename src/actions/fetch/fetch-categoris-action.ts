@@ -3,13 +3,13 @@
 import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 
-type FetchCategoriesProps = {
+type FetchCategoriesActionProps = {
   take: number,
   skip: number,
   search?: string
 }
 
-const fetchCategories = async (props: FetchCategoriesProps) => {
+const FetchCategoriesAction = async (props: FetchCategoriesActionProps) => {
   const { take, skip, search } = props;
 
   try {
@@ -47,4 +47,4 @@ const fetchCategories = async (props: FetchCategoriesProps) => {
   }
 }
 
-export default fetchCategories;
+export default FetchCategoriesAction;

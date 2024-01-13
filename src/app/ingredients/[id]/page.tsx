@@ -1,6 +1,6 @@
-import fetchIngredient from "<spoon>/actions/fetch-ingredient"
+import fetchIngredient from "<spoon>/actions/fetch/fetch-ingredient"
 import { PageProps } from "<spoon>/app/page"
-import MacroDoughnutChart from "<spoon>/components/macro-doughnut-chart"
+import MacroDoughnutChart from "<spoon>/components/chart/macro-doughnut-chart"
 import ContainerUI from "<spoon>/components/ui/container-ui"
 import DividerUI from "<spoon>/components/ui/divider-ui"
 import SectionUI from "<spoon>/components/ui/section-ui"

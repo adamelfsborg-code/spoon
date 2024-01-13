@@ -4,9 +4,9 @@ import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-type AddIngredientToRecipeProps = FormData
+type AddIngredientToRecipeActionProps = FormData
 
-const addIngredientToRecipe = async (props: AddIngredientToRecipeProps) => {
+const AddIngredientToRecipeAction = async (props: AddIngredientToRecipeActionProps) => {
   const ingredientID = props.get('ingredient') as string
   const recipeID = props.get('recipe') as string
   const weight = Number(props.get('weight'))
@@ -33,4 +33,4 @@ const addIngredientToRecipe = async (props: AddIngredientToRecipeProps) => {
   }
 }
 
-export default addIngredientToRecipe;
+export default AddIngredientToRecipeAction;

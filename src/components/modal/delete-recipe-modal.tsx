@@ -1,10 +1,11 @@
 'use client'
 
 import React, { useState } from 'react'
-import ButtonUI from './ui/button-ui'
-import ModalUI from './ui/modal-ui'
+import ModalUI from '../ui/modal-ui'
 import { type Recipe } from '@prisma/client'
-import DeleteRecipeForm from './delete-recipe-form'
+import DeleteRecipeForm from '../form/delete-recipe-form'
+import { TrashIcon } from '@heroicons/react/24/outline'
+import IconUI from '../ui/icon-ui'
 
 type DeleteRecipeModalProps = {
   recipe: Recipe
@@ -17,9 +18,9 @@ const DeleteRecipeModal = (props: DeleteRecipeModalProps) => {
   
   return (
     <>
-      <ButtonUI onClick={() => setShowModal(!showModal)} className='w-full border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-200' >
-        {props.label}
-      </ButtonUI> 
+      <IconUI className='bg-red-100 cursor-pointer ' onClick={() => setShowModal(!showModal)} >
+        <TrashIcon className='w-6 h-6' />
+      </IconUI>
       <ModalUI setShow={setShowModal} show={showModal} label={props.label} >
         <DeleteRecipeForm recipe={props.recipe} setShowModal={setShowModal} />
       </ModalUI>

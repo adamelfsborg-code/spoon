@@ -4,9 +4,9 @@ import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 import { Prisma } from "@prisma/client";
 
-type AddIngredientProps = FormData
+type AddIngredientActionProps = FormData
 
-const addIngredient = async (props: AddIngredientProps) => {
+const AddIngredientAction = async (props: AddIngredientActionProps) => {
   const name = props.get('name') as string
   const category = props.get('category') as string
 
@@ -36,4 +36,4 @@ const addIngredient = async (props: AddIngredientProps) => {
   }
 }
 
-export default addIngredient;
+export default AddIngredientAction;

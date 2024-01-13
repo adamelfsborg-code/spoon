@@ -1,5 +1,5 @@
 import React from 'react'
-import DoughnutChart from './chart/doughnut-chart'
+import DoughnutChart from './doughnut-chart'
 
 type MacroDoughnutChartProps = {
   cals: number

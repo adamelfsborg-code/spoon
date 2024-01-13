@@ -1,6 +1,5 @@
 import { Dispatch, Fragment, HTMLAttributes, SetStateAction, useRef } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ArrowUturnLeftIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 type ModalUIProps = {
   show: boolean

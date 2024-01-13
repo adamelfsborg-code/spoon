@@ -1,4 +1,4 @@
-import AddRecipeForm from "<spoon>/components/add-recipe-form"
+import AddRecipeForm from "<spoon>/components/form/add-recipe-form"
 
 const Page = () => {
   return (

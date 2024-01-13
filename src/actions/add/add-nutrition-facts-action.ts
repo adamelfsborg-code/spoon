@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 
 type AddNutritionFactsActionProps = FormData
 
-const addNutritionFactsAction = async (props: AddNutritionFactsActionProps) => {
+const AddNutritionFactsAction = async (props: AddNutritionFactsActionProps) => {
   const id = props.get('ingredient') as string
 
   const kcal = Number(props.get('energy_kcal'))
@@ -147,4 +147,4 @@ const addNutritionFactsAction = async (props: AddNutritionFactsActionProps) => {
   }
 }
 
-export default addNutritionFactsAction;
+export default AddNutritionFactsAction;

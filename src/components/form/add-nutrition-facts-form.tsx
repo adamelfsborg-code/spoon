@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react";
 import { calculateCals, nutritionMapper } from "<spoon>/lib/nutrition";
 import { type Ingredient } from "@prisma/client";
-import ContainerUI from "./ui/container-ui";
-import DividerUI from "./ui/divider-ui";
-import InputUI from "./ui/input-ui";
-import SectionUI from "./ui/section-ui";
-import ButtonUI from "./ui/button-ui";
-import addNutritionFactsAction from "<spoon>/actions/add-nutrition-facts-action";
+import ContainerUI from "<spoon>/components/ui/container-ui";
+import DividerUI from "<spoon>/components/ui/divider-ui";
+import InputUI from "<spoon>/components/ui/input-ui";
+import SectionUI from "<spoon>/components/ui/section-ui";
+import ButtonUI from "<spoon>/components/ui/button-ui";
+import addNutritionFactsAction from "<spoon>/actions/add/add-nutrition-facts-action";
 import { toast } from "react-hot-toast";
 
 type AddNutritionFactsFormProps = {

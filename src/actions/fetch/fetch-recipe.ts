@@ -3,26 +3,26 @@
 import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 
-type FetchIngredientProps = {
+type FetchRecipeActionProps = {
   id: string
 }
 
-const fetchIngredient = async (props: FetchIngredientProps) => {
+const FetchRecipeAction = async (props: FetchRecipeActionProps) => {
   const { id } = props;
 
   try {
-    const ingredient = await prisma.ingredient.findUnique({
+    const recipe = await prisma.recipe.findUnique({
       where: { 
         id: id
       },
     });
     
-    if (!ingredient) {
-      throw new Error('Ingredient not found')
+    if (!recipe) {
+      throw new Error('Recipe not found')
     }
 
     return {
-      data: ingredient,
+      data: recipe,
     }
   } catch (e) {
     return {
@@ -31,4 +31,4 @@ const fetchIngredient = async (props: FetchIngredientProps) => {
   }
 }
 
-export default fetchIngredient;
+export default FetchRecipeAction;

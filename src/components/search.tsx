@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react'
-import Input from './ui/input-ui';
+import InputUI from '<spoon>/components/ui/input-ui';
 
 type SearchProps = {
   baseUrl: string
@@ -17,7 +17,7 @@ const Search = (props: SearchProps) => {
   }, [text, router, props.baseUrl])
 
   return (
-    <Input 
+    <InputUI 
       type='text'
       label='Search' 
       value={text}

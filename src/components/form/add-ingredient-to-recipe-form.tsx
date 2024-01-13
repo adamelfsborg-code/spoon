@@ -1,11 +1,11 @@
 "use client"
 
-import addIngredientToRecipe from '<spoon>/actions/add-ingredient-to-recipe-action'
+import addIngredientToRecipe from '<spoon>/actions/add/add-ingredient-to-recipe-action'
 import { type Ingredient, type Recipe } from '@prisma/client'
 import { toast } from 'react-hot-toast'
-import Input from './ui/input-ui'
-import ButtonUI from './ui/button-ui'
-import Select from './ui/select-ui'
+import InputUI from '<spoon>/components/ui/input-ui'
+import ButtonUI from '<spoon>/components/ui/button-ui'
+import SelectUI from '<spoon>/components/ui/select-ui'
 
 type AddIngredientToRecipeFormProps = {
   recipe: Recipe
@@ -25,16 +25,16 @@ const AddIngredientToRecipeForm = (props: AddIngredientToRecipeFormProps) => {
   return (
     <form action={handleFormAction}>
       <div className='flex items-center justify-start gap-x-2' >
-        <Input type="hidden" name="recipe" value={props.recipe.id} />
+        <InputUI type="hidden" name="recipe" value={props.recipe.id} />
 
-        <Select label='Ingredient' name='ingredient' defaultValue={0} >
+        <SelectUI label='Ingredient' name='ingredient' defaultValue={0} >
           <option value={0} disabled>Select Ingredient</option>
           {props.ingredients.map((ingredient) => (
             <option value={ingredient.id} key={ingredient.id}>{ingredient.name}</option>
           ))}
-        </Select>
+        </SelectUI>
 
-        <Input type="number" name="weight" label='Weight (g)' />
+        <InputUI type="number" name="weight" label='Weight (g)' />
         
         <ButtonUI>
           Submit

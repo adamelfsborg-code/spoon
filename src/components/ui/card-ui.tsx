@@ -3,8 +3,6 @@ import { HTMLAttributes } from "react";
 
 type CardUIProps = HTMLAttributes<HTMLDivElement>
 
-import React from 'react'
-
 const CardUI = (props: CardUIProps) => {
   return (
     <div

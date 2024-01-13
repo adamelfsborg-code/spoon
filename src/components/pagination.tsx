@@ -1,5 +1,5 @@
 import { cn } from '<spoon>/lib/cn';
-import Link from 'next/link';
+import LinkUI from '<spoon>/components/ui/link-ui';
 
 type PaginationProps = {
 	page?: string;
@@ -43,7 +43,7 @@ const Pagination = (props: PaginationProps) => {
 
 	return (
 		<div className="flex items-center justify-center space-x-6 text-black">
-			<Link
+			<LinkUI
 				className={cn(
 					'rounded-md border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50',
 					currentPage === 1 ? 'pointer-events-none bg-gray-100' : '',
@@ -51,14 +51,14 @@ const Pagination = (props: PaginationProps) => {
 				href={`?page=${currentPage - 1}`}
 			>
 				Previous
-			</Link>
+			</LinkUI>
 
 			<nav
 				aria-label="Pagination"
 				className="relative inline-flex -space-x-px rounded-md"
 			>
 				{pages.map((p, i) => (
-					<Link
+					<LinkUI
 						key={p}
 						className={cn(
 							'relative inline-flex items-center border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50',
@@ -71,11 +71,11 @@ const Pagination = (props: PaginationProps) => {
 						href={`?page=${p}`}
 					>
 						{p}
-					</Link>
+					</LinkUI>
 				))}
 			</nav>
 
-			<Link
+			<LinkUI
 				className={cn(
 					'rounded-md border border-gray-300 px-4 py-2 text-sm font-medium hover:bg-gray-50',
 					!hasNextPage ? 'pointer-events-none bg-gray-100' : '',
@@ -83,7 +83,7 @@ const Pagination = (props: PaginationProps) => {
 				href={`?page=${currentPage + 1}`}
 			>
 				Next
-			</Link>
+			</LinkUI>
 		</div>
 	);
 }

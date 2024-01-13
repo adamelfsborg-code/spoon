@@ -23,8 +23,6 @@ const calculateTotalMacro = (props: CalculateTotalMacroProps | undefined): Calcu
   } )
   const summedResult = sumArray({ array: newArr, keys: keysToSum });
 
-
-
   const roundedResult: CalculateTotalMacroResponse = summedResult;
   keysToSum.forEach((key) => {
     if (summedResult[key]) {

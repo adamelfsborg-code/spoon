@@ -3,9 +3,9 @@
 import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 
-type GenerateIngredientFromRecipeProps = FormData
+type AddIngredientFromRecipeActionProps = FormData
 
-const generateIngredientFromRecipe = async (props: GenerateIngredientFromRecipeProps) => {
+const AddIngredientFromRecipeAction = async (props: AddIngredientFromRecipeActionProps) => {
   try {
     const recipe = props.get('recipe')
     const category = props.get('category')
@@ -151,4 +151,4 @@ const generateIngredientFromRecipe = async (props: GenerateIngredientFromRecipeP
 
 }
 
-export default generateIngredientFromRecipe;
+export default AddIngredientFromRecipeAction;

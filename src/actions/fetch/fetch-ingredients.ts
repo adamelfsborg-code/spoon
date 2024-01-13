@@ -2,19 +2,18 @@
 
 import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
-import { revalidatePath } from "next/cache";
 
-type FetchRecipesProps = {
+type FetchIngredientsActionProps = {
   take: number,
   skip: number,
   search?: string
 }
 
-const fetchRecipes = async (props: FetchRecipesProps) => {
+const FetchIngredientsAction = async (props: FetchIngredientsActionProps) => {
   const { take, skip, search } = props
-  console.log(take, skip, search)
+
   try {
-    const rows = await prisma.recipe.findMany({
+    const rows = await prisma.ingredient.findMany({
       take,
       skip,
       where: { 
@@ -23,17 +22,28 @@ const fetchRecipes = async (props: FetchRecipesProps) => {
           mode: 'insensitive'
         },
       },
+      include: {
+        category: {
+          select: {
+            id: true, // Include the necessary fields from the category
+            timestamp: true,
+            name: true,
+          }
+        }
+      },
+      orderBy: {
+        timestamp: 'desc'
+      }
     });
   
-    const total = await prisma.recipe.count({
+    const total = await prisma.ingredient.count({
       where: { 
         name: {
-          contains: search
+          contains: search,
+          mode: 'insensitive'
         } 
       },
     })
-    
-    revalidatePath('/recipes/list')
   
     return {
       data: rows,
@@ -47,6 +57,7 @@ const fetchRecipes = async (props: FetchRecipesProps) => {
       error: getErrorMessage(e)
     }
   }
+
 }
 
-export default fetchRecipes;
+export default FetchIngredientsAction;

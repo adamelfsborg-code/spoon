@@ -4,9 +4,9 @@ import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 import { revalidatePath } from "next/cache";
 
-type deleteRecipeProps = string
+type DeleteRecipeActionProps = string
 
-const deleteRecipe = async (props: deleteRecipeProps) => {
+const DeleteRecipeAction = async (props: DeleteRecipeActionProps) => {
   try {
     await prisma.ingredientInRecipe.deleteMany({
       where: {
@@ -33,4 +33,4 @@ const deleteRecipe = async (props: deleteRecipeProps) => {
   }
 }
 
-export default deleteRecipe;
+export default DeleteRecipeAction;

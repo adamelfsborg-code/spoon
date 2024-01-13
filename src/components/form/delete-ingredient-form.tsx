@@ -1,7 +1,7 @@
 "use client"
 
-import deleteIngredient from '<spoon>/actions/delete-ingredient-action'
-import ButtonUI from './ui/button-ui'
+import deleteIngredient from '<spoon>/actions/delete/delete-ingredient-action'
+import ButtonUI from '<spoon>/components/ui/button-ui'
 import { type Ingredient } from '@prisma/client'
 import { toast } from 'react-hot-toast'
 

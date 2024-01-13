@@ -3,11 +3,11 @@
 import getErrorMessage from "<spoon>/lib/error";
 import prisma from "<spoon>/lib/prisma";
 
-type FetchRecipeWithIngredientsProps = {
+type FetchRecipeWithIngredientsActionProps = {
   id: string
 }
 
-const fetchRecipeWithIngredients = async (props: FetchRecipeWithIngredientsProps) => {
+const FetchRecipeWithIngredientsAction = async (props: FetchRecipeWithIngredientsActionProps) => {
   const { id } = props;
 
   try {
@@ -34,4 +34,4 @@ const fetchRecipeWithIngredients = async (props: FetchRecipeWithIngredientsProps
   }
 }
 
-export default fetchRecipeWithIngredients;
+export default FetchRecipeWithIngredientsAction;

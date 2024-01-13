@@ -1,12 +1,12 @@
 "use client"
 
-import addIngredient from '<spoon>/actions/add-ingredient-action';
-import ButtonUI from './ui/button-ui'
-import Input from './ui/input-ui'
+import addIngredient from '<spoon>/actions/add/add-ingredient-action';
+import ButtonUI from '<spoon>/components/ui/button-ui'
+import InputUI from '<spoon>/components/ui/input-ui'
+import SelectUI from '<spoon>/components/ui/select-ui';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-hot-toast';
-import SelectUI from './ui/select-ui';
-import { Category } from '@prisma/client';
+import { type Category } from '@prisma/client';
 
 type AddIngredientFormProps = {
   categories: Category[]
@@ -27,7 +27,7 @@ const AddIngredientForm = (props: AddIngredientFormProps) => {
   return (
     <form action={handleFormAction}>
       <div className='flex gap-2' >
-        <Input label='name' name='name' />
+        <InputUI label='name' name='name' />
         <SelectUI name="category" defaultValue={0} label='Category'>
           <option value={0} disabled>Select Category</option>
           {props.categories.map((category) => (
