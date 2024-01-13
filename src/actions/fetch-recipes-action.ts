@@ -12,7 +12,7 @@ type FetchRecipesProps = {
 
 const fetchRecipes = async (props: FetchRecipesProps) => {
   const { take, skip, search } = props
-  
+  console.log(take, skip, search)
   try {
     const rows = await prisma.recipe.findMany({
       take,
@@ -32,7 +32,7 @@ const fetchRecipes = async (props: FetchRecipesProps) => {
         } 
       },
     })
-  
+    
     revalidatePath('/recipes/list')
   
     return {

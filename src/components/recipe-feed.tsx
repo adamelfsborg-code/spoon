@@ -7,7 +7,8 @@ import ButtonUI from './ui/button-ui';
 import CardUI from './ui/card-ui';
 import LinkUI from './ui/link-ui';
 import fetchCategories from '<spoon>/actions/fetch-categoris-action';
-import GenerateIngredientFromRecipeForm from './generate-ingredient-from-recipe-form';
+import GenerateIngredientFromRecipeModal from './generate-ingredient-from-recipe-modal';
+import DeleteRecipeModal from './delete-recipe-modal';
 
 const PAGE_SIZE = 10;
 
@@ -26,6 +27,14 @@ const RecipeFeed = async (props: PageProps) => {
   return (
     <div className='space-y-6' >
 
+      <div className='flex justify-start' >
+        <LinkUI href={`/recipes/builder/`} >
+          <ButtonUI className='w-full' >
+            Add
+          </ButtonUI>
+        </LinkUI>
+      </div>
+
       <div className='flex justify-center gap-2' >
         <Search baseUrl='/recipes/list' />
         <ButtonUI>
@@ -34,28 +43,25 @@ const RecipeFeed = async (props: PageProps) => {
       </div>
 
       <Suspense fallback={<p>Loading feed...</p>}>
-        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' >
+        <div className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3' >
           {recipes?.data?.map((recipe) => (
             <CardUI key={recipe.id}>
               <div className='flex justify-between items-start' >
                 <h4 className='text-1xl font-bold text-center truncate hover:text-clip hover:text-wrap'>{recipe.name}</h4>
               </div>
               <div className='flex flex-col gap-y-2' >
-                <div className='flex gap-x-2' >
-                  <LinkUI key={recipe.id} href={`/recipes/builder/${recipe.id}`} >
-                    <ButtonUI>
-                      Edit
-                    </ButtonUI>
-                  </LinkUI>
-                  <LinkUI key={recipe.id} href={`/recipes/${recipe.id}`} >
-                    <ButtonUI>
-                      View
-                    </ButtonUI>
-                  </LinkUI>
-                </div>
-                <div>
-                  <GenerateIngredientFromRecipeForm categories={categories?.data!} recipe={recipe} />
-                </div>
+                <LinkUI key={recipe.id} href={`/recipes/builder/${recipe.id}`} >
+                  <ButtonUI className='w-full' >
+                    Edit
+                  </ButtonUI>
+                </LinkUI>
+                <LinkUI key={recipe.id} href={`/recipes/${recipe.id}`} >
+                  <ButtonUI className='w-full'>
+                    View
+                  </ButtonUI>
+                </LinkUI>
+                <GenerateIngredientFromRecipeModal show={false} label='Make Ingredient' categories={categories.data!} recipe={recipe} />
+                <DeleteRecipeModal show={false} label='Delete Ingredient' recipe={recipe} />
               </div>
             </CardUI>
           ))}
@@ -63,6 +69,8 @@ const RecipeFeed = async (props: PageProps) => {
       </Suspense>
 
       <Pagination {...props.searchParams} {...recipes?.metadata!} />
+
+
 
     </div>
   )

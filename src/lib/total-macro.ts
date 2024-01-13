@@ -10,7 +10,6 @@ type CalculateTotalMacroResponse = {
   cals: number
 }
 
-
 const calculateTotalMacro = (props: CalculateTotalMacroProps | undefined): CalculateTotalMacroResponse => {
   if (!props || props.length === 0) return {
     protien: 0,

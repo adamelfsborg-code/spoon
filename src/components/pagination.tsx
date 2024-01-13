@@ -55,7 +55,7 @@ const Pagination = (props: PaginationProps) => {
 
 			<nav
 				aria-label="Pagination"
-				className="relative z-0 inline-flex -space-x-px rounded-md"
+				className="relative inline-flex -space-x-px rounded-md"
 			>
 				{pages.map((p, i) => (
 					<Link

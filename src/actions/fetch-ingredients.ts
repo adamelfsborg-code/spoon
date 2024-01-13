@@ -30,6 +30,9 @@ const fetchIngredients = async (props: FetchIngredientsProps) => {
             name: true,
           }
         }
+      },
+      orderBy: {
+        timestamp: 'desc'
       }
     });
   
